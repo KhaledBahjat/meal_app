@@ -19,4 +19,9 @@ class AppTextStyling {
     fontWeight: FontWeight.w400,
     color: AppColors.secondary,
   );
+  static TextStyle whiteSemiBold14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.secondary,
+  );
 }

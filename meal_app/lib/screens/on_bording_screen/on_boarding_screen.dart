@@ -2,9 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meal_app/core/routing/app_routs.dart';
 import 'package:meal_app/core/themes/app_assets.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 import 'package:meal_app/core/themes/app_text_styling.dart';
+import 'package:meal_app/screens/on_bording_screen/widget/arrow_button.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -51,7 +54,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             right: 32.w,
             child: Container(
               width: 311.w,
-              height: 400.h,
+              height: 410.h,
               padding: EdgeInsets.all(21.sp),
               decoration: BoxDecoration(
                 color: AppColors.primary.withOpacity(0.9),
@@ -65,7 +68,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       height: 250.h,
                       enlargeCenterPage: true,
                       viewportFraction: 0.9,
-                      
+
                       onPageChanged: (index, reason) => setState(() {
                         currentIndex = index.toDouble();
                       }),
@@ -119,6 +122,38 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ),
                     ),
                   ),
+                  Spacer(),
+                  currentIndex >= 2
+                      ? ArrowButton()
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              onPressed: () => GoRouter.of(
+                                context,
+                              ).pushReplacementNamed(AppRoutes.homeScreen),
+                              child: Text(
+                                'Skip',
+                                style: AppTextStyling.whiteSemiBold14,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                currentIndex < 2
+                                    ? currentIndex++
+                                    : SizedBox.shrink();
+                                carouselController.animateToPage(
+                                  currentIndex.toInt(),
+                                );
+                                setState(() {});
+                              },
+                              child: Text(
+                                'Next',
+                                style: AppTextStyling.whiteSemiBold14,
+                              ),
+                            ),
+                          ],
+                        ),
                 ],
               ),
             ),
