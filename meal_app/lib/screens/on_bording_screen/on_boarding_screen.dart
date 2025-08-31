@@ -7,6 +7,7 @@ import 'package:meal_app/core/routing/app_routs.dart';
 import 'package:meal_app/core/themes/app_assets.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 import 'package:meal_app/core/themes/app_text_styling.dart';
+import 'package:meal_app/screens/on_bording_screen/on_boarding_services/on_boarding_services.dart';
 import 'package:meal_app/screens/on_bording_screen/widget/arrow_button.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -34,6 +35,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   ];
   double currentIndex = 0;
   CarouselSliderController carouselController = CarouselSliderController();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (OnBoardingServices.isFirstTime()) {
+        OnBoardingServices.setFirstTimeWithFalse();
+      } else {
+        GoRouter.of(context).pushReplacementNamed(AppRoutes.homeScreen);
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +81,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       height: 250.h,
                       enlargeCenterPage: true,
                       viewportFraction: 0.9,
-
+                      enableInfiniteScroll: false,
                       onPageChanged: (index, reason) => setState(() {
                         currentIndex = index.toDouble();
                       }),

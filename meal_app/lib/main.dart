@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/routing/routing_generator.dart';
+import 'package:meal_app/screens/on_bording_screen/on_boarding_services/on_boarding_services.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await OnBoardingServices.initializeShaeredPrefs();
   runApp(const MealApp());
 }
 
