@@ -1,14 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:meal_app/core/routing/app_routs.dart';
 import 'package:meal_app/core/themes/app_assets.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 import 'package:meal_app/core/themes/app_text_styling.dart';
 import 'package:meal_app/screens/on_bording_screen/on_boarding_services/on_boarding_services.dart';
 import 'package:meal_app/screens/on_bording_screen/widget/arrow_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});

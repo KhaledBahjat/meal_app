@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class AppTextStyling {
-  static  TextStyle headLineTitle = TextStyle(
+  static TextStyle headLineTitle = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.secondary,
