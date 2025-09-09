@@ -17,11 +17,7 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     String path = join(await getDatabasesPath(), 'meals.db');
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _createDatabase,
-    );
+    return await openDatabase(path, version: 1, onCreate: _createDatabase);
   }
 
   Future<void> _createDatabase(Database db, int version) async {
@@ -51,4 +47,9 @@ class DatabaseHelper {
     }).toList();
     return meals;
   }
+
+ Future<int> deleteMeal(Meal meal) async {
+  final db = await database;
+  return await db.delete('meals', where: 'name = ?', whereArgs: [meal.name]);
+}
 }

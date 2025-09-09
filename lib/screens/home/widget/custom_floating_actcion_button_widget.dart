@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meal_app/core/routing/app_routs.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 
 class CustomFloatingActcionButtonWidget extends StatelessWidget {
@@ -8,7 +10,9 @@ class CustomFloatingActcionButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        GoRouter.of(context).pushNamed(AppRoutes.addMealsScreen);
+      },
       child: Container(
         width: 60.w,
         height: 60.h,

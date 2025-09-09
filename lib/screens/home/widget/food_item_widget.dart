@@ -21,8 +21,9 @@ class FoodItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
+
       child: SizedBox(
         child: Container(
           padding: EdgeInsets.all(8.sp),
@@ -52,7 +53,13 @@ class FoodItemWidget extends StatelessWidget {
                     style: AppTextStyling.blackMedium16,
                   ),
                 ),
+            
+            
+            
+             
+             
                 SizedBox(height: 8.sp),
+             
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -86,6 +93,9 @@ class FoodItemWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+            
+            
+            
               ],
             ),
           ),
