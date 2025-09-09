@@ -22,7 +22,7 @@ class RoutingGenerator {
       GoRoute(
         name: AppRoutes.addMealsScreen,
         path: AppRoutes.addMealsScreen,
-        builder: (context, state) => AddMealsScreen(),
+        builder: (context, state) => AddMealScreen(),
       ),
       GoRoute(
         path: AppRoutes.detailsScreen,
