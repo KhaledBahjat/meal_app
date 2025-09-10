@@ -1,16 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meal_app/core/themes/app_assets.dart';
 import 'package:meal_app/core/themes/app_colors.dart';
 import 'package:meal_app/core/themes/app_text_styling.dart';
-import 'package:meal_app/screens/home/data/model/meal_model.dart';
 
-class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.meal});
+class MealDetailsScreen extends StatefulWidget {
+  const MealDetailsScreen({super.key});
 
-  final Meal meal;
+  @override
+  State<MealDetailsScreen> createState() => _MealDetailsScreenState();
+}
 
+class _MealDetailsScreenState extends State<MealDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,8 +24,15 @@ class MealDetailsScreen extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                     CachedNetworkImage(imageUrl: meal.imageUrl,fit: BoxFit.fill,width: double.infinity,height: 327.h,)
-                    ,
+                    SizedBox(
+                      width: 359.w,
+                      height: 327.h,
+
+                      child: Image.asset(
+                        AppAssets.exampleImage,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                     Positioned(
                       top: 12.h,
                       left: 5.w,
@@ -56,7 +65,7 @@ class MealDetailsScreen extends StatelessWidget {
                     children: [
                       Text(
                         textAlign: TextAlign.left,
-                        meal.name,
+                        'Cheese Burger 🍔',
                         style: AppTextStyling.headLineTitle.copyWith(
                           color: AppColors.blackColor,
                           fontSize: 24.sp,
@@ -83,7 +92,7 @@ class MealDetailsScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 4.sp),
                                 Text(
-                                  meal.rate.toString(),
+                                  '4.5',
                                   style: AppTextStyling.whiteRegular14.copyWith(
                                     color: Colors.black,
                                   ),
@@ -99,7 +108,7 @@ class MealDetailsScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 4.sp),
                                 Text(
-                                  meal.time,
+                                  '30-40',
                                   style: AppTextStyling.whiteRegular14.copyWith(
                                     color: Colors.black,
                                   ),
@@ -120,7 +129,7 @@ class MealDetailsScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        meal.description,
+                        'Burger With Meat is a typical food from our restaurant that is much in demand by many people, this is very recommended for you.',
                         style: AppTextStyling.whiteRegular14.copyWith(
                           color: Color(0xff878787),
                         ),

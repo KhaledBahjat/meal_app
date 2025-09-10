@@ -7,9 +7,9 @@ import 'package:meal_app/core/themes/app_text_styling.dart';
 import 'package:meal_app/core/widget/spacing.dart';
 import 'package:meal_app/screens/add_meals/widget/add_meal_button.dart';
 import 'package:meal_app/screens/add_meals/widget/custom_text_field.dart';
+import 'package:meal_app/screens/add_meals/widget/custom_title.dart';
 import 'package:meal_app/screens/home/data/db_helper/db_helper.dart';
 import 'package:meal_app/screens/home/data/model/meal_model.dart';
-
 
 class AddMealScreen extends StatefulWidget {
   const AddMealScreen({super.key});
@@ -37,11 +37,9 @@ class _AddMealScreenState extends State<AddMealScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          "Add Meal",
-          style: AppTextStyling.blackMedium16,
-        ),
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        title: CustomTitleWidget(),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -53,19 +51,20 @@ class _AddMealScreenState extends State<AddMealScreen> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height,
                     child: Center(
-                        child: SizedBox(
-                      width: 40.sp,
-                      height: 40.sp,
-                      child: const CircularProgressIndicator(
-                        color: AppColors.primary,
+                      child: SizedBox(
+                        width: 40.sp,
+                        height: 40.sp,
+                        child: const CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
                       ),
-                    )),
+                    ),
                   )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Meal Name", style: AppTextStyling.blackMedium16),
-                      SizedBox(height: 8.h,),
+                      SizedBox(height: 8.h),
                       CustomTextField(
                         controller: mealNameController,
                         validator: (val) {
@@ -77,7 +76,7 @@ class _AddMealScreenState extends State<AddMealScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16.h,),
+                      SizedBox(height: 16.h),
                       Text("Image URl", style: AppTextStyling.blackMedium16),
                       const HeightSpace(8),
                       CustomTextField(
@@ -143,8 +142,9 @@ class _AddMealScreenState extends State<AddMealScreen> {
                             );
 
                             dbHelper.insertMeal(meal).then((value) {
-                              GoRouter.of(context)
-                                  .pushReplacementNamed(AppRoutes.homeScreen);
+                              GoRouter.of(
+                                context,
+                              ).pushReplacementNamed(AppRoutes.homeScreen);
                             });
                           }
                         },
