@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meal_app/core/themes/app_text_styling.dart';
 
 class CustomTitleWidget extends StatelessWidget {
-   CustomTitleWidget({super.key});
+   const CustomTitleWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

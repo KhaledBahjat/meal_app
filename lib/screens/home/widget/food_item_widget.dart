@@ -72,7 +72,7 @@ class FoodItemWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 4.sp),
                         Text(
-                          time.toString(),
+                         '${ time.toString()} min',
                           style: AppTextStyling.whiteRegular14.copyWith(
                             color: Colors.black,
                           ),

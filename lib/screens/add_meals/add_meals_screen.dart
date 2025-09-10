@@ -32,7 +32,7 @@ class _AddMealScreenState extends State<AddMealScreen> {
 
   bool isLoading = false;
 
-  // 🔹 متغير الصورة
+
   File? _pickedImage;
   final ImagePicker _picker = ImagePicker();
 
