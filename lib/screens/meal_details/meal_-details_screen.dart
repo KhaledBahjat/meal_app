@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,8 +23,11 @@ class MealDetailsScreen extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                     CachedNetworkImage(imageUrl: meal.imageUrl,fit: BoxFit.fill,width: double.infinity,height: 327.h,)
-                    ,
+                    SizedBox(
+                      width: 359.w,
+                      height: 327.h,
+                      child: _buildImage(meal.imageUrl), 
+                    ),
                     Positioned(
                       top: 12.h,
                       left: 5.w,
@@ -55,8 +59,8 @@ class MealDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        textAlign: TextAlign.left,
                         meal.name,
+                        textAlign: TextAlign.left,
                         style: AppTextStyling.headLineTitle.copyWith(
                           color: AppColors.blackColor,
                           fontSize: 24.sp,
@@ -81,7 +85,7 @@ class MealDetailsScreen extends StatelessWidget {
                                   color: AppColors.primary,
                                   size: 16.sp,
                                 ),
-                                SizedBox(height: 4.sp),
+                                SizedBox(width: 4.sp),
                                 Text(
                                   meal.rate.toString(),
                                   style: AppTextStyling.whiteRegular14.copyWith(
@@ -97,9 +101,9 @@ class MealDetailsScreen extends StatelessWidget {
                                   color: AppColors.primary,
                                   size: 16.sp,
                                 ),
-                                SizedBox(height: 4.sp),
+                                SizedBox(width: 6.sp),
                                 Text(
-                                  meal.time,
+                                  '${meal.time} min',
                                   style: AppTextStyling.whiteRegular14.copyWith(
                                     color: Colors.black,
                                   ),
@@ -134,5 +138,22 @@ class MealDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+  Widget _buildImage(String imageUrl) {
+    if (imageUrl.startsWith("http")) {
+      return CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.fill,
+        errorWidget: (context, url, error) =>
+            const Icon(Icons.error, color: Colors.red),
+      );
+    } else {
+      return Image.file(
+        File(imageUrl),
+        fit: BoxFit.fill,
+      );
+    }
   }
 }

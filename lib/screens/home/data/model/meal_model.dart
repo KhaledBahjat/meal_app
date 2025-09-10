@@ -1,3 +1,4 @@
+
 class Meal {
   final String name;
   final String imageUrl;
@@ -5,12 +6,13 @@ class Meal {
   final String time;
   final double rate;
 
-  Meal(
-      {required this.name,
-      required this.imageUrl,
-      required this.description,
-      required this.time,
-      required this.rate});
+  Meal({
+    required this.name,
+    required this.imageUrl,
+    required this.description,
+    required this.time,
+    required this.rate,
+  });
 
   Map<String, dynamic> toMap() {
     return {
